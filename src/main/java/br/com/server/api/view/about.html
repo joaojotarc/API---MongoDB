@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre - Projeto API</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Wink+Sans&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="menu-toggle" onclick="document.querySelector('.menu').classList.toggle('active')">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="menu">
+        <div class="menu-content">
+            <div class="theme-switcher">
+                <label class="switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider"></span>
+                </label>
+                <span id="theme-label">Tema Claro</span>
+            </div>
+            <button class="menu-btn home-btn" onclick="location.href='index.html'">Home</button>
+            <button class="menu-btn about-btn" onclick="location.href='about.html'">Sobre</button>
+            <button class="menu-btn export-csv-btn">Exportar CSV</button>
+        </div>
+    </div>
+    <div class="box" style="max-width: 800px;">
+        <h1>Sobre o Projeto API</h1>
+        <p>
+            O Projeto API é uma aplicação desenvolvida para demonstrar a integração de uma interface web com uma API REST. 
+            Este projeto foi criado com o objetivo de facilitar o gerenciamento de dados de usuários, permitindo operações 
+            como cadastro, atualização, pesquisa e exclusão de informações. Além disso, o sistema oferece funcionalidades 
+            adicionais, como exportação de dados em formato CSV e alternância entre temas claro e escuro para melhorar a 
+            experiência do usuário.
+        </p>
+        <p>
+            A interface foi projetada com foco na simplicidade e usabilidade, utilizando tecnologias modernas como HTML5, 
+            CSS3 e JavaScript. O design responsivo garante que o site seja acessível em diferentes dispositivos, desde 
+            desktops até smartphones. A integração com a API REST permite que os dados sejam manipulados de forma eficiente 
+            e segura, seguindo as melhores práticas de desenvolvimento.
+        </p>
+        <p>
+            Este projeto é ideal para desenvolvedores que desejam aprender mais sobre a criação de aplicações web completas, 
+            desde a interface do usuário até a comunicação com o backend. Ele também serve como um exemplo prático de como 
+            implementar funcionalidades comuns em sistemas de gerenciamento de dados, como tabelas dinâmicas, validação de 
+            formulários e notificações de feedback.
+        </p>
+        <p>
+            Esperamos que este projeto seja útil para sua aprendizagem e que você possa adaptá-lo às suas necessidades. 
+            Sinta-se à vontade para explorar o código, fazer melhorias e compartilhar suas ideias. Obrigado por visitar 
+            nosso site e por seu interesse no Projeto API!
+        </p>
+    </div>
+</body>
+</html>

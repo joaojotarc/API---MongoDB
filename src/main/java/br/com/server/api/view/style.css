@@ -1,0 +1,747 @@
+/* style.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Winky+Sans:ital,wght@0,300..900;1,300..900&display=swap');
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Winky Sans", sans-serif;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Ubuntu', sans-serif;
+    background: linear-gradient(135deg, #3263cd, #120461);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden; /* Evita rolagem inicial */
+    padding: 3rem; /* Aumentado levemente para criar margens maiores */
+    position: relative;
+}
+
+/* Box Styling */
+.box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    padding: 2rem; /* Reduzido */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px; /* Restaurado ao tamanho original */
+    transition: transform 0.5s ease; /* Animação para mover a box */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* Ajustado para centralizar corretamente */
+    max-height: 85vh; /* Ajusta a altura para igualar com a tabela */
+}
+
+/* Table Box Styling */
+.table-box {
+    display: flex; /* Sempre presente para permitir animação */
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 750px;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: absolute;
+    left: -100%; /* Inicialmente fora da tela à esquerda */
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: left 0.5s ease, opacity 0.5s ease; /* Animação para deslizar e aparecer */
+}
+
+.table-box.active {
+    left: 2%; /* Move para a posição visível */
+    opacity: 1;
+}
+
+.table-box.hidden {
+    left: -100%; /* Move para fora da tela à esquerda */
+    opacity: 0;
+}
+
+/* Table Box Title */
+.table-box h1 {
+    display: flex;
+    justify-content: space-between; /* Garante alinhamento entre o título e o botão */
+    align-items: center; /* Centraliza verticalmente o botão com o título */
+    margin-bottom: 1rem;
+    font-size: 1.8rem; /* Mesmo tamanho do título principal */
+    color: #007BFF; /* Azul para o título */
+}
+
+/* Close Table Button */
+.close-table-btn {
+    position: relative; /* Alinha com o título */
+    left: 58%;
+    margin-left: 1rem; /* Espaçamento ao lado do título */
+    padding: 0.5rem 2rem; /* Mesmo tamanho dos outros botões */
+    max-width: 150px; /* Define uma largura menor no eixo X */
+    border: none;
+    border-radius: 5px;
+    background: #dc3545; /* Vermelho */
+    color: #fff;
+    font-size: 0.85rem; /* Mesmo tamanho de fonte dos outros botões */
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    display: inline-block; /* Garante alinhamento com o título */
+    vertical-align: middle; /* Alinha verticalmente com o texto */
+}
+
+.close-table-btn:hover {
+    background: #c82333; /* Vermelho mais escuro */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+/* Form and Buttons Layout */
+.form-container {
+    display: grid; /* Alinha os campos e botões em grid */
+    grid-template-columns: 1fr 1fr; /* Duas colunas: uma para os campos e outra para os botões */
+    gap: 2rem; /* Aumenta o espaçamento entre as colunas */
+    height: 100%; /* Preenche toda a altura da box */
+}
+
+/* Form Fields Layout */
+.form-fields {
+    display: flex;
+    flex-direction: column; /* Alinha os campos verticalmente */
+    justify-content: space-between; /* Espaça os campos para preencher a altura */
+    gap: 0.5rem; /* Reduzido para ajustar o espaçamento entre os campos */
+}
+
+.box input {
+    width: 95%; /* Aumentado para preencher mais o container */
+    padding: 0.5rem; /* Aumentado para melhorar a usabilidade */
+    margin: 0;
+    margin-bottom: 1rem; /* Aumentado para criar mais espaçamento entre os campos */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.85rem; /* Aumentado para melhorar a leitura */
+    outline: none;
+    background: rgba(240, 240, 240, 1);
+    color: #000;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+form input::placeholder, .box input::placeholder {
+    color: #9e9e9e;
+}
+
+form input:hover, .box input:hover {
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+form input:focus, .box input:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.8);
+}
+
+/* Buttons Container */
+.buttons-container {
+    display: flex;
+    flex-direction: column; /* Alinha os botões verticalmente */
+    align-items: center; /* Alinha os botões ao centro */
+    gap: 1.2rem; /* Ajustado o espaçamento entre os botões */
+}
+
+.buttons-container button:first-child {
+    margin-top: 1rem; /* Adiciona espaçamento superior ao primeiro botão */
+}
+
+/* Buttons */
+button {
+    width: 75%; /* Reduzido de 85% para 75% */
+    padding: 0.5rem; /* Reduzido de 0.6rem para 0.5rem */
+    margin: 0 auto; /* Centraliza os botões */
+    border: none;
+    border-radius: 5px;
+    font-size: 0.75rem; /* Reduzido de 0.8rem para 0.75rem */
+    cursor: pointer;
+    background: #007BFF;
+    color: #fff;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+button:hover {
+    background: #0056b3; /* Azul escuro */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+/* Hover específico para o botão Exportar CSV */
+.export-csv-btn {
+    width: 75%; /* Reduzido de 85% para 75% */
+    padding: 0.5rem; /* Reduzido de 0.6rem para 0.5rem */
+    font-size: 0.75rem; /* Reduzido de 0.8rem para 0.75rem */
+    margin: 0 auto;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #ffc107; /* Amarelo */
+    color: #333;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.export-csv-btn:hover {
+    background: #e0a800; /* Amarelo mais escuro */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+/* Headings */
+h1 {
+    font-family: 'Ubuntu', sans-serif; /* Alterado para Ubuntu */
+    font-size: 1.8rem; /* Reduzido */
+    margin-bottom: 1rem;
+    color: #007BFF; /* Azul para o título */
+}
+
+/* Input Number Styling */
+input.id {
+    width: 88%; /* Reduzido para se alinhar com as outras caixas de texto */
+    margin-left: 0; /* Removido o espaçamento lateral */
+    padding: 0.35rem; /* Mantido consistente com as outras caixas */
+    margin-top: 1rem;
+    display: inline-block; /* Alinha com o rótulo */
+    width: calc(95% - 1.5rem); /* Ajustado para caber melhor ao lado do rótulo */
+    margin-left: 0.3rem; /* Reduzido o espaçamento entre o rótulo e a caixa */
+    padding: 0.4rem; /* Reduzido o padding para compactar */
+}
+
+/* Table Styling */
+.table-container {
+    width: 100%;
+    overflow-x: hidden; /* Remove rolagem horizontal */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+table th, table td {
+    border: 1px solid #ccc;
+    padding: 0.8rem; /* Reduzido */
+    text-align: left;
+    font-size: 0.85rem; /* Reduzido */
+}
+
+table th {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Generate Table Button */
+.generate-table-btn {
+    width: 75%; /* Reduzido de 85% para 75% */
+    padding: 0.5rem; /* Reduzido de 0.6rem para 0.5rem */
+    font-size: 0.75rem; /* Reduzido de 0.8rem para 0.75rem */
+    background: #28a745; /* Verde */
+    color: #fff;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.generate-table-btn:hover {
+    background: #218838; /* Verde mais escuro no hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+/* Theme Switcher */
+.theme-switcher {
+    position: absolute;
+    top: 0.8rem;
+    left: 2rem;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 0.3rem 0.6rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.theme-switcher input {
+    margin-right: 0.5rem;
+}
+
+#theme-label {
+    font-size: 0.9rem;
+    color: #FFD700; /* Cor dourada para destacar no fundo preto */
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* Main Title Styling */
+.main-title {
+    position: absolute;
+    top: 0.5rem; /* Posicionado no topo */
+    left: 50%;
+    transform: translateX(-50%); /* Centralizado horizontalmente */
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #007BFF;
+    font-family: 'Ubuntu', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin: 0; /* Remove margens extras */
+}
+
+/* Dark Mode */
+body.dark-mode {
+    background: linear-gradient(135deg, #010d33, #000);
+    color: #fff;
+}
+
+body.dark-mode .box,
+body.dark-mode .table-box {
+    background: rgba(50, 50, 50, 0.9);
+    color: #fff;
+}
+
+body.dark-mode .box input,
+body.dark-mode .table-box input {
+    background: rgba(70, 70, 70, 1);
+    color: #fff;
+    border-color: #555;
+}
+
+body.dark-mode input::placeholder {
+    color: #aaa; /* Cor mais clara para melhor contraste no modo escuro */
+}
+
+/* Preserve button styles in dark mode */
+body.dark-mode button {
+    background: #003772;
+    color: #fff;
+}
+
+body.dark-mode button:hover {
+    background: #002245;
+}
+
+/* Preserve table header styles in dark mode */
+body.dark-mode table th {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+body.dark-mode table tr:nth-child(even) {
+    background-color: #333;
+}
+
+body.dark-mode label {
+    color: #FFD700; /* Cor dourada para destacar no tema escuro */
+}
+
+/* Switch Styling */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 100%; /* Ajusta o tamanho do fundo para coincidir com o botão */
+    height: 40px; /* Aumenta a altura para combinar com o botão */
+    background: rgba(255, 255, 255, 0.1); /* Fundo translúcido */
+    border-radius: 5px; /* Bordas arredondadas */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para destaque */
+    padding: 0.5rem; /* Adiciona espaçamento interno */
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 20px;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 20px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #007BFF;
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+/* Footer Styling */
+footer {
+    position: absolute;
+    bottom: 1rem;
+    width: 100%;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #fff;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* Toast Notifications */
+.toast {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    background: #28a745;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-size: 0.9rem;
+    opacity: 1;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.toast.error {
+    background: #dc3545;
+}
+
+.toast.fade-out {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Fade-in Animation */
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.pesquisar-nome {
+    width: 75%; /* Reduzido de 85% para 75% */
+    padding: 0.5rem; /* Reduzido de 0.6rem para 0.5rem */
+    font-size: 0.75rem; /* Reduzido de 0.8rem para 0.75rem */
+    margin: 0 auto;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #17a2b8; /* Azul claro */
+    color: #fff;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.pesquisar-nome:hover {
+    background: #138496; /* Azul mais escuro */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+.export-csv-btn {
+    width: 75%; /* Reduzido de 85% para 75% */
+    padding: 0.5rem; /* Reduzido de 0.6rem para 0.5rem */
+    font-size: 0.75rem; /* Reduzido de 0.8rem para 0.75rem */
+    margin: 0 auto;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #ffc107; /* Amarelo */
+    color: #333;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.export-csv-btn:hover {
+    background: #e0a800; /* Amarelo mais escuro */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+label {
+    font-size: 0.85rem; /* Aumentado para melhorar a visibilidade */
+    color: #333;
+    margin-bottom: 0.5rem; /* Adicionado espaçamento inferior */
+    display: inline-block;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* Menu Styling */
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    color: #fff;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.menu.active {
+    transform: translateX(0);
+}
+
+.menu-toggle {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    width: 40px; /* Aumentado para melhor visibilidade */
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 1100; /* Garante que o botão de sanduíche fique acima do menu */
+    background: rgba(0, 0, 0, 0.8); /* Fundo escuro para destaque */
+    padding: 0.5rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    align-items: center; /* Centraliza as barras horizontalmente */
+}
+
+.menu-toggle span {
+    display: block;
+    width: 80%; /* Ajustado para centralizar as barras */
+    height: 4px;
+    background: #fff;
+    border-radius: 2px;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.menu-content {
+    margin-top: 3rem; /* Move os botões mais para cima */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Ajusta o espaçamento entre os botões */
+    align-items: center; /* Centraliza os botões horizontalmente */
+}
+
+.menu-content .theme-switcher {
+    display: flex;
+    left:0%;
+    align-items: center;
+    width: 85%; /* Ajusta a largura para caber melhor no menu */
+    padding: 0.4rem; /* Adiciona espaçamento interno */
+    background: rgba(255, 255, 255, 0.2); /* Fundo mais claro para destacar */
+    border-radius: 5px; /* Bordas arredondadas */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para destaque */
+    position: relative; /* Garante que fique dentro do menu */
+}
+
+.menu-content .theme-switcher label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.menu-content .export-csv-btn {
+    width: 90%; /* Ajusta a largura para caber melhor no menu */
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    color: #000; /* Define a cor da fonte como preto */
+    background: #ffc107;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.menu-content .export-csv-btn:hover {
+    background: #e0a800;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+/* Estilo para o botão Sobre */
+.menu-content .about-btn {
+    background: #17a2b8; /* Azul claro */
+    color: #fff;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.menu-content .about-btn:hover {
+    background: #138496; /* Azul mais escuro */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+/* Estilo específico para o botão Exportar CSV */
+.menu-content .export-csv-btn:hover {
+    background: #e0a800; /* Amarelo mais escuro */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+.menu-content .menu-btn {
+    width: 90%;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.menu-btn:hover {
+    background: #0056b3;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .box, .table-box {
+        max-width: 90%;
+        padding: 1.5rem;
+    }
+
+    .form-container {
+        grid-template-columns: 1fr; /* Ajusta para uma única coluna */
+        gap: 1rem;
+    }
+
+    .buttons-container {
+        gap: 0.8rem; /* Reduz o espaçamento entre os botões */
+    }
+
+    button {
+        width: 90%; /* Ajusta a largura dos botões */
+    }
+
+    .menu {
+        width: 200px; /* Reduz a largura do menu */
+    }
+
+    .menu-toggle {
+        width: 35px;
+        height: 25px;
+    }
+
+    .menu-toggle span {
+        width: 70%; /* Ajusta a largura das barras */
+    }
+
+    .menu-content {
+        gap: 1rem; /* Reduz o espaçamento entre os itens do menu */
+    }
+
+    .main-title {
+        font-size: 1.5rem; /* Reduz o tamanho do título principal */
+    }
+
+    h1 {
+        font-size: 1.5rem; /* Reduz o tamanho dos títulos */
+    }
+
+    table th, table td {
+        font-size: 0.75rem; /* Reduz o tamanho da fonte na tabela */
+        padding: 0.6rem; /* Ajusta o espaçamento */
+    }
+
+    .theme-switcher {
+        top: 0.5rem;
+        left: 1rem;
+        padding: 0.2rem 0.4rem;
+    }
+
+    footer {
+        font-size: 0.8rem; /* Reduz o tamanho da fonte no rodapé */
+    }
+}
+
+@media (max-width: 480px) {
+    .box, .table-box {
+        max-width: 95%;
+        padding: 1rem;
+    }
+
+    .buttons-container {
+        gap: 0.5rem; /* Reduz ainda mais o espaçamento entre os botões */
+    }
+
+    button {
+        width: 100%; /* Botões ocupam toda a largura */
+    }
+
+    .menu {
+        width: 180px; /* Reduz ainda mais a largura do menu */
+    }
+
+    .menu-toggle {
+        width: 30px;
+        height: 20px;
+    }
+
+    .menu-toggle span {
+        width: 60%; /* Ajusta a largura das barras */
+    }
+
+    .main-title {
+        font-size: 1.2rem; /* Reduz ainda mais o tamanho do título principal */
+    }
+
+    h1 {
+        font-size: 1.2rem; /* Reduz ainda mais o tamanho dos títulos */
+    }
+
+    table th, table td {
+        font-size: 0.65rem; /* Reduz ainda mais o tamanho da fonte na tabela */
+        padding: 0.4rem; /* Ajusta o espaçamento */
+    }
+
+    .theme-switcher {
+        top: 0.3rem;
+        left: 0.5rem;
+        padding: 0.1rem 0.3rem;
+    }
+
+    footer {
+        font-size: 0.7rem; /* Reduz ainda mais o tamanho da fonte no rodapé */
+    }
+}
